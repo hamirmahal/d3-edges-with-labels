@@ -80,7 +80,7 @@
         })
         .call(force.drag);
 
-      var nodelabels = svg
+      var nodeLabels = svg
         .selectAll(".nodelabel")
         .data(dataset.nodes)
         .enter()
@@ -99,7 +99,7 @@
           return d.name;
         });
 
-      var edgepaths = svg
+      var edgePaths = svg
         .selectAll(".edgepath")
         .data(dataset.edges)
         .enter()
@@ -128,7 +128,7 @@
         })
         .style("pointer-events", "none");
 
-      var edgelabels = svg
+      var edgeLabels = svg
         .selectAll(".edgelabel")
         .data(dataset.edges)
         .enter()
@@ -145,7 +145,7 @@
           fill: "#aaa",
         });
 
-      edgelabels
+      edgeLabels
         .append("textPath")
         .attr("xlink:href", function (d, i) {
           return "#edgepath" + i;
@@ -199,7 +199,7 @@
           },
         });
 
-        nodelabels
+        nodeLabels
           .attr("x", function (d) {
             return d.x;
           })
@@ -207,7 +207,7 @@
             return d.y;
           });
 
-        edgepaths.attr("d", function (d) {
+        edgePaths.attr("d", function (d) {
           var path =
             "M " +
             d.source.x +
@@ -221,7 +221,7 @@
           return path;
         });
 
-        edgelabels.attr("transform", function (d, i) {
+        edgeLabels.attr("transform", function (d, i) {
           if (d.target.x < d.source.x) {
             bbox = this.getBBox();
             rx = bbox.x + bbox.width / 2;
